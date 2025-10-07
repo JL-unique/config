@@ -24,10 +24,12 @@ install_bin() {
 }
 
 if [ $(which dnf 2> /dev/null) ]; then
+	echo "Using DNF package system"
 	install_bin "dnf"
 fi
 
 if [ $(which apt 2> /dev/null) ]; then
+	echo "Using APT package system"
 	install_bin "apt"
 fi
 
