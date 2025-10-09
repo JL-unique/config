@@ -38,6 +38,6 @@ fi
 
 #Start TMUX on shell creation
 #Move to separate file for bash profiles..
-if [[ -z $(grep '[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session;}' ~/.bashrc) ]]; then
-	echo '[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session;}' >> ~/.bashrc	
+if [[ -z $(grep '[ -z "$TMUX"  ] && { tmux attach || tmux new-session;}' ~/.bashrc) ]]; then
+	echo '[ -z "$TMUX"  ] && { tmux attach || tmux new-session;}' >> ~/.bashrc	
 fi
