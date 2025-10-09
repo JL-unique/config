@@ -8,7 +8,8 @@ install_bin() {
 			else
 				echo $LINE installed
 			fi
-		done < ./programs.txt	
+		done < ./programs.txt
+		exit 0	
 	fi
 	
 	if [ $1 = "apt" ]; then
@@ -19,8 +20,10 @@ install_bin() {
 				echo $LINE installed
 			fi
 		done < ./programs.txt	
-
+		exit 0
 	fi
+
+	exit 1
 }
 
 if [ $(which dnf 2> /dev/null) ]; then
@@ -33,4 +36,8 @@ if [ $(which apt 2> /dev/null) ]; then
 	install_bin "apt"
 fi
 
-
+#Start TMUX on shell creation
+#Move to separate file for bash profiles..
+if [[ -z $(grep '[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session;}' ~/.bashrc) ]]; then
+	echo '[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session;}' >> ~/.bashrc	
+fi
